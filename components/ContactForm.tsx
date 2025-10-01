@@ -8,43 +8,42 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
 
-interface ContactFormPayload {
-  name: string;
-  email: string;
-  company: string;
-  message: string;
-}
-
 const ContactForm = () => {
-  const [formData, setFormData] = useState<ContactFormPayload>({
-    name: '',
-    email: '',
-    company: '',
-    message: ''
-  });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission (no backend configured yet)
-    setTimeout(() => {
-      toast({
-        title: "Message sent!",
-        description: "Thank you for your message. We'll get back to you soon.",
-      });
-      setFormData({ name: '', email: '', company: '', message: '' });
-      setIsSubmitting(false);
-    }, 1000);
-  };
+    const form = e.currentTarget;
+    const formData = new FormData(form);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }));
+    try {
+      const response = await fetch('/__forms.html', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData as any).toString(),
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Message sent!",
+          description: "Thank you for your message. We'll get back to you soon.",
+        });
+        form.reset();
+      } else {
+        throw new Error('Form submission failed');
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -56,15 +55,15 @@ const ContactForm = () => {
         </p>
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-6" data-vercel-form="contact">
+          <input type="hidden" name="form-name" value="contact" />
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="name">Name *</Label>
               <Input
                 id="name"
                 name="name"
-                value={formData.name}
-                onChange={handleChange}
                 required
               />
             </div>
@@ -74,30 +73,24 @@ const ContactForm = () => {
                 id="email"
                 name="email"
                 type="email"
-                value={formData.email}
-                onChange={handleChange}
                 required
               />
             </div>
           </div>
-          
+
           <div className="space-y-2">
             <Label htmlFor="company">Company</Label>
             <Input
               id="company"
               name="company"
-              value={formData.company}
-              onChange={handleChange}
             />
           </div>
-          
+
           <div className="space-y-2">
             <Label htmlFor="message">Message *</Label>
             <Textarea
               id="message"
               name="message"
-              value={formData.message}
-              onChange={handleChange}
               rows={5}
               required
             />
