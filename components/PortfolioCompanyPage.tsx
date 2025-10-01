@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { ArrowLeft, ExternalLink, MapPin, Calendar, Linkedin, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
