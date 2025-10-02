@@ -3,11 +3,12 @@ import React from 'react';
 
 const Team = () => {
   return (
-    <section className="py-20 bg-slate-950 text-white">
-      <div className="max-w-7xl mx-auto px-8">
+    <section className="py-24 md:py-32 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white relative overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.03),transparent_50%)]"></div>
+      <div className="max-w-7xl mx-auto px-8 relative">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           <div>
-            <h2 className="text-3xl md:text-4xl font-bold leading-tight mb-6">
+            <h2 className="text-3xl md:text-4xl font-semibold leading-tight mb-6">
               Anyone can back<br />
               a winning company<br />
               once it's a winner.

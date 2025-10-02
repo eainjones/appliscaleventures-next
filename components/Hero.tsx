@@ -3,7 +3,7 @@
 import React from 'react';
 const Hero = () => {
   return (
-    <section id="home" className="py-20 bg-background flex items-center justify-center relative">
+    <section id="home" className="py-24 md:py-32 bg-gradient-to-b from-background to-secondary/30 flex items-center justify-center relative">
       <div className="max-w-6xl mx-auto px-8 text-left">
         <h1 className="text-4xl md:text-6xl font-medium leading-tight mb-6 text-foreground">
           Venture capital that backs{' '}

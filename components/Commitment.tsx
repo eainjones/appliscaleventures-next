@@ -3,12 +3,12 @@ import React from 'react';
 
 const Commitment = () => {
   return (
-    <section className="py-16 bg-background">
+    <section className="py-20 md:py-24 bg-gradient-to-b from-background via-background to-secondary/20">
       <div className="max-w-6xl mx-auto px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-normal text-foreground mb-6 leading-tight">
+          <h2 className="text-3xl md:text-4xl font-medium text-foreground mb-6 leading-tight">
             At Appliscale Ventures, we build partnerships to serve{' '}
-            <span className="underline decoration-2 underline-offset-4">founders'</span> long-term success.
+            <span className="underline decoration-2 underline-offset-8">founders'</span> long-term success.
           </h2>
         </div>
         

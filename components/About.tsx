@@ -4,7 +4,7 @@ import React from 'react';
 
 const About = () => {
   return (
-    <section className="py-16 bg-secondary">
+    <section className="py-20 md:py-24 bg-secondary">
       <div className="max-w-6xl mx-auto px-8">
         <h2 className="text-3xl md:text-4xl font-medium text-foreground mb-12 leading-tight">
           Our most ambitious investments yet, backing founders at the{' '}
