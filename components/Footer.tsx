@@ -1,11 +1,23 @@
 import React from 'react';
 import Link from 'next/link';
 import { Linkedin } from 'lucide-react';
+import NewsletterSignup from './NewsletterSignup';
 
 const Footer = () => {
   return (
     <footer className="bg-slate-950 text-white border-t border-slate-800">
       <div className="max-w-7xl mx-auto px-8 py-16">
+        {/* Newsletter Section */}
+        <div className="mb-12 pb-12 border-b border-slate-800">
+          <div className="max-w-2xl">
+            <h3 className="text-2xl font-semibold mb-2">Stay in the Loop</h3>
+            <p className="text-slate-400 mb-6">
+              Get our latest news, investment insights, and portfolio updates delivered to your inbox.
+            </p>
+            <NewsletterSignup variant="minimal" />
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           {/* Company Info */}
           <div className="md:col-span-1">

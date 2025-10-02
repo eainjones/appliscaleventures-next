@@ -1,22 +1,35 @@
+'use client';
+
+import { useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { newsArticles } from '@/data/newsArticles';
+import { newsArticles, NewsArticle } from '@/data/newsArticles';
 import Link from 'next/link';
-import { Calendar, ArrowRight } from 'lucide-react';
+import { Calendar, ArrowRight, Search } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-
-export const metadata = {
-  title: 'News & Insights | Appliscale Ventures',
-  description: 'Latest news, insights, and updates from Appliscale Ventures and our portfolio companies.',
-};
+import { Input } from '@/components/ui/input';
 
 export default function NewsPage() {
-  const categories = ['All', 'Investment', 'Portfolio News', 'Insights', 'Company Update'] as const;
+  const [selectedCategory, setSelectedCategory] = useState<string>('All');
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const categories: Array<'All' | NewsArticle['category']> = ['All', 'Investment', 'Portfolio News', 'Insights', 'Company Update'];
 
   // Sort articles by date, most recent first
   const sortedArticles = [...newsArticles].sort((a, b) =>
     new Date(b.publishedDate).getTime() - new Date(a.publishedDate).getTime()
   );
+
+  // Filter articles by category and search query
+  const filteredArticles = sortedArticles.filter((article) => {
+    const matchesCategory = selectedCategory === 'All' || article.category === selectedCategory;
+    const matchesSearch = searchQuery === '' ||
+      article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      article.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      article.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
+
+    return matchesCategory && matchesSearch;
+  });
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('en-US', {
@@ -42,11 +55,66 @@ export default function NewsPage() {
         </div>
       </section>
 
+      {/* Filters Section */}
+      <section className="py-8 bg-white border-b border-border">
+        <div className="max-w-7xl mx-auto px-8">
+          <div className="flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
+            {/* Category Filters */}
+            <div className="flex flex-wrap gap-2">
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  onClick={() => setSelectedCategory(category)}
+                  className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
+                    selectedCategory === category
+                      ? 'bg-primary text-primary-foreground shadow-sm'
+                      : 'bg-secondary text-foreground hover:bg-secondary/80'
+                  }`}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+
+            {/* Search Input */}
+            <div className="relative w-full md:w-auto md:min-w-[300px]">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Input
+                type="text"
+                placeholder="Search articles..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="pl-10"
+              />
+            </div>
+          </div>
+
+          {/* Results Count */}
+          <div className="mt-4 text-sm text-muted-foreground">
+            Showing {filteredArticles.length} {filteredArticles.length === 1 ? 'article' : 'articles'}
+          </div>
+        </div>
+      </section>
+
       {/* Articles Grid */}
       <section className="py-16 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {sortedArticles.map((article) => (
+          {filteredArticles.length === 0 ? (
+            <div className="text-center py-12">
+              <p className="text-xl text-muted-foreground">No articles found matching your criteria.</p>
+              <button
+                onClick={() => {
+                  setSelectedCategory('All');
+                  setSearchQuery('');
+                }}
+                className="mt-4 text-primary hover:underline"
+              >
+                Clear filters
+              </button>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredArticles.map((article) => (
               <Link key={article.id} href={`/news/${article.slug}`}>
                 <Card className="h-full hover:shadow-xl hover:border-slate-300 transition-all duration-300 cursor-pointer hover:-translate-y-1 flex flex-col">
                   <CardHeader>
@@ -82,7 +150,8 @@ export default function NewsPage() {
                 </Card>
               </Link>
             ))}
-          </div>
+            </div>
+          )}
         </div>
       </section>
 
