@@ -6,9 +6,9 @@ const About = () => {
   return (
     <section className="py-16 bg-secondary">
       <div className="max-w-6xl mx-auto px-8">
-        <h2 className="text-3xl md:text-4xl font-normal text-foreground mb-12 leading-tight">
+        <h2 className="text-3xl md:text-4xl font-medium text-foreground mb-12 leading-tight">
           Our most ambitious investments yet, backing founders at the{' '}
-          <span className="underline decoration-2 underline-offset-4">frontier</span> of innovation
+          <span className="underline decoration-2 underline-offset-8">frontier</span> of innovation
         </h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

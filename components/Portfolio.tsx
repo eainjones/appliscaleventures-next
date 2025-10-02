@@ -22,23 +22,25 @@ const Portfolio = () => {
   return (
     <section className="py-32 bg-white">
       <div className="max-w-7xl mx-auto px-8">
-        <h2 className="text-4xl font-bold text-slate-900 mb-16 text-center">Our Portfolio</h2>
-        
+        <h2 className="text-4xl font-semibold text-slate-900 mb-16 text-center">Our Portfolio</h2>
+
         <div className="space-y-16">
           {portfolioData.map((category) => (
             <div key={category.category}>
-              <h3 className="text-2xl font-bold text-slate-900 mb-8 text-center tracking-wide">
+              <h3 className="text-sm font-medium text-slate-500 mb-8 text-center tracking-wider uppercase">
                 {category.category}
               </h3>
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {category.companies.map((company) => (
                 <Link key={company.id} href={`/company/${company.id}`}>
-                  <Card className="hover:shadow-lg transition-all duration-300 cursor-pointer hover:scale-105">
+                  <Card className="hover:shadow-xl hover:border-slate-300 transition-all duration-300 cursor-pointer hover:-translate-y-1 h-full">
                     <CardHeader>
                       <div className="flex items-center gap-3 mb-2">
-                        <company.icon className="h-6 w-6 text-slate-600" />
-                        <CardTitle className="text-xl text-slate-900">
+                        <div className="p-2 rounded-lg bg-slate-50 transition-colors group-hover:bg-slate-100">
+                          <company.icon className="h-5 w-5 text-slate-700" />
+                        </div>
+                        <CardTitle className="text-xl font-semibold text-slate-900">
                           {company.name}
                         </CardTitle>
                       </div>

@@ -5,9 +5,9 @@ const Hero = () => {
   return (
     <section id="home" className="py-20 bg-background flex items-center justify-center relative">
       <div className="max-w-6xl mx-auto px-8 text-left">
-        <h1 className="text-4xl md:text-6xl font-normal leading-tight mb-6 text-foreground">
+        <h1 className="text-4xl md:text-6xl font-medium leading-tight mb-6 text-foreground">
           Venture capital that backs{' '}
-          <span className="underline decoration-2 underline-offset-4">exceptional</span>{' '}
+          <span className="underline decoration-2 underline-offset-8">exceptional</span>{' '}
           founders building tomorrow's companies
         </h1>
         
@@ -18,14 +18,14 @@ const Hero = () => {
             <p className="text-foreground mb-6">
               Exceptional companies we've backed from pre-seed to Series B across Europe and the US.
             </p>
-            <button 
+            <button
               onClick={() => {
                 const element = document.getElementById('portfolio');
                 if (element) {
                   element.scrollIntoView({ behavior: 'smooth' });
                 }
               }}
-              className="bg-primary text-primary-foreground px-6 py-2 rounded-md text-sm font-medium hover:bg-primary/90 transition-colors"
+              className="bg-primary text-primary-foreground px-6 py-2.5 rounded-md text-sm font-medium hover:bg-primary/90 transition-all duration-200 shadow-sm hover:shadow-md hover:-translate-y-0.5"
             >
               View portfolio
             </button>
@@ -37,14 +37,14 @@ const Hero = () => {
             <p className="text-foreground mb-6">
               Strategic guidance, operational expertise, and long-term commitment for transformative founders.
             </p>
-            <button 
+            <button
               onClick={() => {
                 const element = document.querySelector('#about') || document.querySelector('section:nth-child(3)');
                 if (element) {
                   element.scrollIntoView({ behavior: 'smooth' });
                 }
               }}
-              className="border border-border text-foreground px-6 py-2 rounded-md text-sm font-medium hover:bg-secondary transition-colors"
+              className="border border-border text-foreground px-6 py-2.5 rounded-md text-sm font-medium hover:bg-secondary transition-all duration-200 hover:shadow-sm hover:border-slate-400"
             >
               Learn more
             </button>
