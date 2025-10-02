@@ -17,22 +17,22 @@ const Team = () => {
           
           <div className="space-y-8">
             <div>
-              <h3 className="text-lg font-bold mb-4 tracking-wide">LEADERSHIP</h3>
+              <h3 className="text-sm font-medium mb-6 tracking-wider uppercase text-slate-300">LEADERSHIP</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <p className="font-semibold">Eain Jones</p>
+                <div className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-5 hover:bg-white/10 hover:border-white/20 transition-all duration-300 hover:-translate-y-1">
+                  <p className="font-semibold text-lg mb-1 group-hover:text-white transition-colors">Eain Jones</p>
                   <p className="text-slate-400 text-sm">Managing Partner</p>
                 </div>
-                <div>
-                  <p className="font-semibold">Kamil Kuback</p>
+                <div className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-5 hover:bg-white/10 hover:border-white/20 transition-all duration-300 hover:-translate-y-1">
+                  <p className="font-semibold text-lg mb-1 group-hover:text-white transition-colors">Kamil Kuback</p>
                   <p className="text-slate-400 text-sm">Partner</p>
                 </div>
-                <div>
-                  <p className="font-semibold">Konrad Kaplita</p>
+                <div className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-5 hover:bg-white/10 hover:border-white/20 transition-all duration-300 hover:-translate-y-1">
+                  <p className="font-semibold text-lg mb-1 group-hover:text-white transition-colors">Konrad Kaplita</p>
                   <p className="text-slate-400 text-sm">Partner</p>
                 </div>
-                <div>
-                  <p className="font-semibold">Michal Niec</p>
+                <div className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-5 hover:bg-white/10 hover:border-white/20 transition-all duration-300 hover:-translate-y-1">
+                  <p className="font-semibold text-lg mb-1 group-hover:text-white transition-colors">Michal Niec</p>
                   <p className="text-slate-400 text-sm">Partner</p>
                 </div>
               </div>

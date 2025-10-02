@@ -12,8 +12,8 @@ const Hero = () => {
         </h1>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
-          <div className="bg-card p-6 rounded-lg border border-border">
-            <h3 className="text-sm font-medium text-muted-foreground mb-2">INVESTMENT</h3>
+          <div className="group bg-white/80 backdrop-blur-sm p-6 rounded-lg border border-border shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <h3 className="text-sm font-medium text-muted-foreground mb-2 tracking-wider">INVESTMENT</h3>
             <h2 className="text-2xl font-medium text-foreground mb-4">Meet our portfolio</h2>
             <p className="text-foreground mb-6">
               Exceptional companies we've backed from pre-seed to Series B across Europe and the US.
@@ -30,9 +30,9 @@ const Hero = () => {
               View portfolio
             </button>
           </div>
-          
-          <div className="bg-card p-6 rounded-lg border border-border">
-            <h3 className="text-sm font-medium text-muted-foreground mb-2">PARTNERSHIP</h3>
+
+          <div className="group bg-white/80 backdrop-blur-sm p-6 rounded-lg border border-border shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <h3 className="text-sm font-medium text-muted-foreground mb-2 tracking-wider">PARTNERSHIP</h3>
             <h2 className="text-2xl font-medium text-foreground mb-4">Build with our support</h2>
             <p className="text-foreground mb-6">
               Strategic guidance, operational expertise, and long-term commitment for transformative founders.

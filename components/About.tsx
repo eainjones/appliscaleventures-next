@@ -12,45 +12,45 @@ const About = () => {
         </h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-card p-6 rounded-lg border border-border">
+          <div className="group bg-card p-6 rounded-lg border border-border hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
             <div className="mb-4">
               <span className="text-sm font-medium text-muted-foreground">Investment focus</span>
             </div>
             <h3 className="text-2xl font-medium text-foreground mb-4">Early Stage</h3>
             <p className="text-foreground leading-relaxed mb-6">
-              Pre-seed to Series A investments in exceptional founders building 
+              Pre-seed to Series A investments in exceptional founders building
               transformative companies across technology and innovation sectors.
             </p>
-            <button 
+            <button
               onClick={() => {
                 const element = document.querySelector('#portfolio');
                 if (element) {
                   element.scrollIntoView({ behavior: 'smooth' });
                 }
               }}
-              className="flex items-center text-foreground hover:underline transition-all"
+              className="flex items-center text-foreground hover:text-foreground/70 transition-colors duration-200 group-hover:translate-x-1"
             >
               Learn more about early stage →
             </button>
           </div>
-          
-          <div className="bg-card p-6 rounded-lg border border-border">
+
+          <div className="group bg-card p-6 rounded-lg border border-border hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
             <div className="mb-4">
               <span className="text-sm font-medium text-muted-foreground">Investment focus</span>
             </div>
             <h3 className="text-2xl font-medium text-foreground mb-4">Growth Stage</h3>
             <p className="text-foreground leading-relaxed mb-6">
-              Series B+ investments in proven companies ready to scale globally, 
+              Series B+ investments in proven companies ready to scale globally,
               with strategic guidance and operational expertise.
             </p>
-            <button 
+            <button
               onClick={() => {
                 const element = document.querySelector('#portfolio');
                 if (element) {
                   element.scrollIntoView({ behavior: 'smooth' });
                 }
               }}
-              className="flex items-center text-foreground hover:underline transition-all"
+              className="flex items-center text-foreground hover:text-foreground/70 transition-colors duration-200 group-hover:translate-x-1"
             >
               Learn more about growth stage →
             </button>

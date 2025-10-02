@@ -12,13 +12,13 @@ const Commitment = () => {
           </h2>
         </div>
         
-        <div className="bg-card p-8 rounded-lg border border-border">
+        <div className="bg-card p-8 rounded-lg border border-border shadow-md hover:shadow-xl transition-all duration-300">
           <blockquote className="text-xl text-foreground leading-relaxed mb-8">
-            "While no one can foresee every outcome entrepreneurship will have on society, 
-            we do know that building transformative companies requires both bold vision 
+            "While no one can foresee every outcome entrepreneurship will have on society,
+            we do know that building transformative companies requires both bold vision
             and thoughtful execution with the right partners by your side."
           </blockquote>
-          
+
           <div className="text-sm text-muted-foreground">
             <div className="font-medium">Managing Partner</div>
             <div>Investment Philosophy, Appliscale Ventures</div>

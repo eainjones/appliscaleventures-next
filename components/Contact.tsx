@@ -12,16 +12,20 @@ const Contact = () => {
             </h2>
             
             <div className="space-y-8">
-              <div>
+              <div className="group">
                 <h3 className="font-semibold text-slate-900 mb-2">General Inquiries</h3>
-                <p className="text-slate-600">hello@appliscaleventures.com</p>
+                <a href="mailto:hello@appliscaleventures.com" className="text-slate-600 hover:text-slate-900 transition-colors duration-200">
+                  hello@appliscaleventures.com
+                </a>
               </div>
-              
-              <div>
+
+              <div className="group">
                 <h3 className="font-semibold text-slate-900 mb-2">Investment Opportunities</h3>
-                <p className="text-slate-600">invest@appliscaleventures.com</p>
+                <a href="mailto:invest@appliscaleventures.com" className="text-slate-600 hover:text-slate-900 transition-colors duration-200">
+                  invest@appliscaleventures.com
+                </a>
               </div>
-              
+
               <div>
                 <h3 className="font-semibold text-slate-900 mb-2">Krakow Office</h3>
                 <p className="text-slate-600">
