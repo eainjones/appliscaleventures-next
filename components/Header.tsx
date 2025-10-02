@@ -31,16 +31,16 @@ const Header = () => {
   return (
     <div className="sticky top-0 z-50">
       {/* Top bar with group companies */}
-      <div className="bg-slate-900 text-white py-2">
+      <div className="bg-slate-900/90 backdrop-blur-xl text-white py-2 border-b border-white/5">
         <div className="max-w-7xl mx-auto px-8">
           <div className="flex justify-end items-center space-x-8 text-xs">
-            <a href="https://appliscale.io" target="_blank" rel="noopener noreferrer" className="hover:text-slate-300 transition-colors duration-200">
+            <a href="https://appliscale.io" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 transition-colors duration-200">
               APPLISCALE
             </a>
-            <a href="https://appliscalelabs.com/" target="_blank" rel="noopener noreferrer" className="hover:text-slate-300 transition-colors duration-200">
+            <a href="https://appliscalelabs.com/" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 transition-colors duration-200">
               LABS
             </a>
-            <a href="http://www.appliscaleventures.com/" target="_blank" rel="noopener noreferrer" className="text-slate-400 cursor-default">
+            <a href="http://www.appliscaleventures.com/" target="_blank" rel="noopener noreferrer" className="text-cyan-400">
               VENTURES
             </a>
           </div>
@@ -48,59 +48,59 @@ const Header = () => {
       </div>
 
       {/* Main header */}
-      <header className="bg-background/95 backdrop-blur-md border-b border-border shadow-sm">
+      <header className="bg-slate-900/50 backdrop-blur-2xl border-b border-white/10">
         <div className="max-w-7xl mx-auto px-8">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center">
-              <Link href="/" className="text-lg font-medium text-foreground">
+              <Link href="/" className="text-lg font-medium text-white">
                 APPLISCALE VENTURES
               </Link>
             </div>
-            
+
             <nav className="hidden md:flex items-center space-x-8">
               <a
                 href="#home"
                 onClick={(e) => handleNavClick(e, 'home')}
-                className="text-foreground text-sm hover:text-foreground/70 transition-colors duration-200 cursor-pointer py-1.5"
+                className="text-white/80 text-sm hover:text-cyan-400 transition-colors duration-200 cursor-pointer py-1.5"
               >
                 Home
               </a>
               <Link
                 href="/why"
-                className="text-foreground text-sm hover:text-foreground/70 transition-colors duration-200 py-1.5"
+                className="text-white/80 text-sm hover:text-cyan-400 transition-colors duration-200 py-1.5"
               >
                 Why
               </Link>
               <a
                 href="#portfolio"
                 onClick={(e) => handleNavClick(e, 'portfolio')}
-                className="text-foreground text-sm hover:text-foreground/70 transition-colors duration-200 cursor-pointer py-1.5"
+                className="text-white/80 text-sm hover:text-cyan-400 transition-colors duration-200 cursor-pointer py-1.5"
               >
                 Portfolio
               </a>
               <Link
                 href="/news"
-                className="text-foreground text-sm hover:text-foreground/70 transition-colors duration-200 py-1.5"
+                className="text-white/80 text-sm hover:text-cyan-400 transition-colors duration-200 py-1.5"
               >
                 News
               </Link>
               <a
                 href="#team"
                 onClick={(e) => handleNavClick(e, 'team')}
-                className="text-foreground text-sm hover:text-foreground/70 transition-colors duration-200 cursor-pointer py-1.5"
+                className="text-white/80 text-sm hover:text-cyan-400 transition-colors duration-200 cursor-pointer py-1.5"
               >
                 Team
               </a>
               <Link
                 href="/contact"
-                className="bg-primary text-primary-foreground px-3 py-1.5 rounded-md text-sm font-medium hover:bg-primary/90 transition-colors shadow-sm"
+                className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white px-4 py-2 rounded-lg text-sm font-medium hover:from-cyan-400 hover:to-blue-400 transition-all shadow-sm"
               >
                 Get in Touch
               </Link>
             </nav>
 
             <button
-              className="md:hidden p-2 text-foreground"
+              className="md:hidden p-2 text-white"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -109,44 +109,44 @@ const Header = () => {
         </div>
 
         {isMenuOpen && (
-          <div className="md:hidden bg-background/95 backdrop-blur-md border-t border-border">
+          <div className="md:hidden bg-slate-900/90 backdrop-blur-xl border-t border-white/10">
             <nav className="flex flex-col space-y-4 px-8 py-6">
               <a
                 href="#home"
                 onClick={(e) => handleNavClick(e, 'home')}
-                className="text-foreground text-sm hover:text-foreground/70 transition-colors duration-200 cursor-pointer"
+                className="text-white/80 text-sm hover:text-cyan-400 transition-colors duration-200 cursor-pointer"
               >
                 Home
               </a>
               <Link
                 href="/why"
-                className="text-foreground text-sm hover:text-foreground/70 transition-colors duration-200"
+                className="text-white/80 text-sm hover:text-cyan-400 transition-colors duration-200"
               >
                 Why
               </Link>
               <a
                 href="#portfolio"
                 onClick={(e) => handleNavClick(e, 'portfolio')}
-                className="text-foreground text-sm hover:text-foreground/70 transition-colors duration-200 cursor-pointer"
+                className="text-white/80 text-sm hover:text-cyan-400 transition-colors duration-200 cursor-pointer"
               >
                 Portfolio
               </a>
               <Link
                 href="/news"
-                className="text-foreground text-sm hover:text-foreground/70 transition-colors duration-200"
+                className="text-white/80 text-sm hover:text-cyan-400 transition-colors duration-200"
               >
                 News
               </Link>
               <a
                 href="#team"
                 onClick={(e) => handleNavClick(e, 'team')}
-                className="text-foreground text-sm hover:text-foreground/70 transition-colors duration-200 cursor-pointer"
+                className="text-white/80 text-sm hover:text-cyan-400 transition-colors duration-200 cursor-pointer"
               >
                 Team
               </a>
               <Link
                 href="/contact"
-                className="bg-primary text-primary-foreground px-3 py-1.5 rounded-md text-sm font-medium hover:bg-primary/90 transition-colors shadow-sm"
+                className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white px-4 py-2 rounded-lg text-sm font-medium hover:from-cyan-400 hover:to-blue-400 transition-all shadow-sm"
               >
                 Get in Touch
               </Link>
