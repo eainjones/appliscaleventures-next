@@ -9,33 +9,24 @@ import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
 
 const ContactForm = () => {
-  const [status, setStatus] = useState<'idle' | 'submitting' | 'done' | 'error'>('idle');
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setStatus('submitting');
+    setIsSubmitting(true);
 
     const form = e.currentTarget;
     const formData = new FormData(form);
 
-    const payload = {
-      name: String(formData.get('name') || ''),
-      email: String(formData.get('email') || ''),
-      company: String(formData.get('company') || ''),
-      message: String(formData.get('message') || ''),
-      website: String(formData.get('website') || ''), // honeypot
-    };
-
     try {
-      const response = await fetch('/api/contact', {
+      const response = await fetch('/__forms.html', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData as any).toString(),
       });
 
       if (response.ok) {
-        setStatus('done');
         toast({
           title: "Message sent!",
           description: "Thank you for your message. We'll get back to you soon.",
@@ -45,12 +36,13 @@ const ContactForm = () => {
         throw new Error('Form submission failed');
       }
     } catch (error) {
-      setStatus('error');
       toast({
         title: "Error",
         description: "Failed to send message. Please try again.",
         variant: "destructive",
       });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -63,15 +55,8 @@ const ContactForm = () => {
         </p>
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Honeypot field for spam protection */}
-          <input
-            type="text"
-            name="website"
-            className="hidden"
-            tabIndex={-1}
-            autoComplete="off"
-          />
+        <form onSubmit={handleSubmit} className="space-y-6" data-vercel-form="contact">
+          <input type="hidden" name="form-name" value="contact" />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
@@ -111,24 +96,13 @@ const ContactForm = () => {
             />
           </div>
           
-          <Button
-            type="submit"
-            className="w-full"
-            disabled={status === 'submitting'}
+          <Button 
+            type="submit" 
+            className="w-full" 
+            disabled={isSubmitting}
           >
-            {status === 'submitting' ? 'Sending...' : 'Send Message'}
+            {isSubmitting ? 'Sending...' : 'Send Message'}
           </Button>
-
-          {status === 'done' && (
-            <p className="text-sm text-center text-green-600">
-              Thanks! We'll get back to you soon.
-            </p>
-          )}
-          {status === 'error' && (
-            <p className="text-sm text-center text-red-600">
-              Something went wrong. Please try again.
-            </p>
-          )}
         </form>
       </CardContent>
     </Card>
