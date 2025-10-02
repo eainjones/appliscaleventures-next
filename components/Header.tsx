@@ -78,6 +78,12 @@ const Header = () => {
               >
                 Portfolio
               </a>
+              <Link
+                href="/news"
+                className="text-foreground text-sm hover:text-foreground/70 transition-colors duration-200 py-1.5"
+              >
+                News
+              </Link>
               <a
                 href="#team"
                 onClick={(e) => handleNavClick(e, 'team')}
@@ -125,6 +131,12 @@ const Header = () => {
               >
                 Portfolio
               </a>
+              <Link
+                href="/news"
+                className="text-foreground text-sm hover:text-foreground/70 transition-colors duration-200"
+              >
+                News
+              </Link>
               <a
                 href="#team"
                 onClick={(e) => handleNavClick(e, 'team')}
